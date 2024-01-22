@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class PifShuffleBag : MonoBehaviour {
 
-    private const int SIZE = 101;
-
     [SerializeField]
     private GameObject prefabGraphItem;
 
     [SerializeField]
     private int nbRandomToGenerate;
 
+    [SerializeField]
+    private int randomMax = 100;
+
     private List<int> shuffleBag = new List<int>();
 
-    private int[] graphData = new int[SIZE];
+    private int[] graphData;
 
     private int nbRandom;
 
-    private GameObject[] graphItem = new GameObject[SIZE];
+    private GameObject[] graphItem;
+
+    private int GetSize() {
+        return randomMax + 1;
+    }
 
     private void Start() {
 
-        for (int i = 0; i < SIZE; i++) {
+        graphData = new int[GetSize()];
+        graphItem = new GameObject[GetSize()];
+
+        for (int i = 0; i < GetSize(); i++) {
 
             graphItem[i] = Instantiate(prefabGraphItem, transform);
             graphItem[i].transform.localPosition = new Vector3(i, 0f, 0f);
@@ -46,7 +54,7 @@ public class PifShuffleBag : MonoBehaviour {
 
         if (shuffleBag.Count == 0) {
 
-            for (int i = 0; i < SIZE; i++) {
+            for (int i = 0; i < GetSize(); i++) {
                 shuffleBag.Add(i);
             }
 
@@ -85,7 +93,7 @@ public class PifShuffleBag : MonoBehaviour {
 
     private void RefreshGraph() {
 
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < GetSize(); i++) {
 
             float scale = graphData[i];
             graphItem[i].transform.localScale = new Vector3(1f, scale, 1f);

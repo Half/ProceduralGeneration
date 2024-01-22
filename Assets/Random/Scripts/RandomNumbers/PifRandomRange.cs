@@ -11,7 +11,10 @@ public class PifRandomRange : MonoBehaviour {
 
     [SerializeField]
     private int nbRandomToGenerate;
-        
+
+    [SerializeField]
+    private int randomMax;
+
     private int[] graphData = new int[SIZE];
 
     private int nbRandom;
@@ -39,7 +42,7 @@ public class PifRandomRange : MonoBehaviour {
 
         for (int i = 0; i < nb; i++) {
 
-            int random = Random.Range(0, 101);
+            int random = Random.Range(0, randomMax + 1);
             graphData[random]++;
 
         }
