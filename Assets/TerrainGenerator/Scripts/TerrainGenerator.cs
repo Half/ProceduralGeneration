@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TerrainGenerator : MonoBehaviour {
 
@@ -13,7 +14,7 @@ public class TerrainGenerator : MonoBehaviour {
     private int terrainSizeX = 50;
 
     [SerializeField]
-    private int terrainSizeY = 50;
+    private int terrainSizeZ = 50;
 
     [SerializeField]
     private GameObject prForest;
@@ -51,7 +52,7 @@ public class TerrainGenerator : MonoBehaviour {
 
     public void GenerateTerrain() {
 
-        terrain = new TILE_TYPE[terrainSizeX, terrainSizeY];
+        terrain = new TILE_TYPE[terrainSizeX, terrainSizeZ];
 
         // Init seed
         UnityEngine.Random.InitState(seed);
@@ -77,7 +78,7 @@ public class TerrainGenerator : MonoBehaviour {
 
         for (int x = 0; x < terrainSizeX; x++)
         {
-            for (int y = 0; y < terrainSizeY; y++)
+            for (int y = 0; y < terrainSizeZ; y++)
             {
 
                 float2 coordsOffseted = new float2(x + noiseOffset.x, y + noiseOffset.y);
@@ -103,7 +104,7 @@ public class TerrainGenerator : MonoBehaviour {
 
         for (int x = 0; x < terrainSizeX; x++)
         {
-            for (int y = 0; y < terrainSizeY; y++) {
+            for (int y = 0; y < terrainSizeZ; y++) {
 
                 GameObject prefab = GetPrefab(terrain[x, y]);
                 GameObject go = Instantiate(prefab, new Vector3(x, 0f, y), Quaternion.identity);
