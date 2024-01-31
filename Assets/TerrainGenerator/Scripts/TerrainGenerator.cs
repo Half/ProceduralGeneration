@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class TerrainGenerator : MonoBehaviour {
 
@@ -45,17 +46,25 @@ public class TerrainGenerator : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
         GenerateTerrain();
-
     }
 
-    public void GenerateTerrain() {
+    public void BtnGenerateTerrainWithRandomSeed() {
+        seed = Random.Range(int.MinValue, int.MaxValue);
+        GenerateTerrain();
+    }
+
+    public void BtnGenerateTerrain() {
+        GenerateTerrain();
+    }
+
+    private void GenerateTerrain()
+    {
 
         terrain = new TILE_TYPE[terrainSizeX, terrainSizeZ];
 
         // Init seed
-        UnityEngine.Random.InitState(seed);
+        Random.InitState(seed);
 
         // Mountain
         Generate(TILE_TYPE.MOUNTAIN, new float2(20f, 40f), NOISE_TYPE.PERLIN, 0.8f);
@@ -64,7 +73,7 @@ public class TerrainGenerator : MonoBehaviour {
         Generate(TILE_TYPE.FOREST, new float2(20f, 40f), NOISE_TYPE.SIMPLEX, 0.5f);
 
         // Water
-        Generate(TILE_TYPE.WATER, new float2(30f, 40f), NOISE_TYPE.CELLULAR, 0.8f);
+        Generate(TILE_TYPE.WATER, new float2(50f, 70f), NOISE_TYPE.CELLULAR, 0.8f);
 
         Spawn();
 
@@ -73,8 +82,8 @@ public class TerrainGenerator : MonoBehaviour {
     private void Generate(TILE_TYPE type, float2 scaleMinMax, NOISE_TYPE noiseType, float greaterThanValue) {
 
         // Forest
-        float2 noiseOffset = new float2(UnityEngine.Random.Range(0f, 100000f), UnityEngine.Random.Range(0f, 100000f));
-        float noiseScale = UnityEngine.Random.Range(scaleMinMax.x, scaleMinMax.y);
+        float2 noiseOffset = new float2(Random.Range(0f, 100000f), Random.Range(0f, 100000f));
+        float noiseScale = Random.Range(scaleMinMax.x, scaleMinMax.y);
 
         for (int x = 0; x < terrainSizeX; x++)
         {
