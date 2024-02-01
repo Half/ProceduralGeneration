@@ -36,31 +36,15 @@ public class TextureNoise : MonoBehaviour {
     private Texture2D tex;
 
     // Start is called before the first frame update
-    IEnumerator Start() {
-
-        switch (noiseType) {
-            case NOISE_TYPE.CELLULAR:
-                break;
-            case NOISE_TYPE.PERLIN:
-                break;
-            case NOISE_TYPE.SIMPLEX:
-                break;
-        }
-
-        tex = new Texture2D(textureSizeX, textureSizeY);
-        targetRenderer.material.mainTexture = tex;
-
-
-        yield return CrtGenerate();
-    
+    private void Start() {
+        Generate();
     }
 
-    public void Generate() {
-        StopAllCoroutines();
-        StartCoroutine(CrtGenerate());
+    public void BtnGenerate() {
+        Generate();
     }
 
-    private IEnumerator CrtGenerate() {
+    private void Generate() {
 
         tex = new Texture2D(textureSizeX, textureSizeY);
         targetRenderer.material.mainTexture = tex;
@@ -72,6 +56,7 @@ public class TextureNoise : MonoBehaviour {
                 float2 coords = new float2(coordsOffseted.x / noiseScale, coordsOffseted.y / noiseScale);
 
                 float color = GetColor(coords);
+
                 color = ApplyAlgo(color);
 
                 tex.SetPixel(x, y, Color.white * color);
@@ -81,7 +66,7 @@ public class TextureNoise : MonoBehaviour {
 
         tex.Apply();
 
-        yield break;
+        //yield break;
 
     }
 
@@ -117,6 +102,8 @@ public class TextureNoise : MonoBehaviour {
     private float ApplyAlgo(float color) {
 
         float res = math.pow(color, resultPow);
+        //Mathf.Pow(color, resultPow);
+
 
         return res;
 

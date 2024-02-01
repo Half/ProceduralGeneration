@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = Unity.Mathematics.Random;
 
 public class TextureNoiseWithSeed : MonoBehaviour {
 
@@ -34,11 +33,63 @@ public class TextureNoiseWithSeed : MonoBehaviour {
 
     // Start is called before the first frame update
     IEnumerator Start() {
-        yield return CrtGenerate(seed);
+        
+        BtnGenerate();
+        yield break;
+
+        //yield return StartCoroutine(TestLog());
+
+        //yield return StartCoroutine(TestLog2());
+
+        //StopAllCoroutines();
+
     }
 
-    public void Generate() {
+    private IEnumerator TestLog() {
+        
+        Debug.Log("Start");
+        yield return new WaitForSeconds(5f);
+        Debug.Log("Start 0.5");
+
+        for (int i = 0; i < 5; i++) {
+            yield return 0f;
+            //if (1 == 1) {
+            //    yield break;
+            //}
+        }
+        StartCoroutine(TestLog2());
+        yield return 0f;
+        yield return StartCoroutine(TestLog2());
+        Debug.Log("Start next frame");
+
+    }
+
+    private IEnumerator TestLog2() {
+
+        Debug.Log("Start");
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("Start 0.5");
+
+        for (int i = 0; i < 5; i++) {
+            yield return 0f;
+            //if (1 == 1) {
+            //    yield break;
+            //}
+        }
+
+        yield return 0f;
+        Debug.Log("Start next frame");
+
+    }
+
+    public void BtnGenerate() {
         StopAllCoroutines();
+        StartCoroutine(CrtGenerate(seed));
+    }
+
+    public void BtnGenerateSeed() {
+        StopAllCoroutines();
+        seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
         StartCoroutine(CrtGenerate(seed));
     }
 
@@ -48,11 +99,18 @@ public class TextureNoiseWithSeed : MonoBehaviour {
         UnityEngine.Random.InitState(seed);
 
         // Random
-        float2 noiseOffset = new float2(UnityEngine.Random.Range(0f, 100000f), UnityEngine.Random.Range(0f, 100000f));
+        float2 noiseOffset = new float2(
+            UnityEngine.Random.Range(-100000f, 100000f),
+            UnityEngine.Random.Range(-100000f, 100000f)
+        );
+
         float noiseScale = UnityEngine.Random.Range(80f, 300f);
 
         tex = new Texture2D(textureSizeX, textureSizeY);
         targetRenderer.material.mainTexture = tex;
+
+        int iteration = 0;
+        int interationSteps = Mathf.RoundToInt((textureSizeX * textureSizeY) / 100f);
 
         for (int x = 0; x < textureSizeX; x++) {
             for (int y = 0; y < textureSizeY; y++) {
@@ -65,12 +123,16 @@ public class TextureNoiseWithSeed : MonoBehaviour {
 
                 tex.SetPixel(x, y, Color.white * color);
 
+                iteration++;            
+                if (iteration % interationSteps == 0) {
+                    tex.Apply();
+                    yield return new WaitForSeconds(0.05f);
+                }
+
             }
         }
 
         tex.Apply();
-
-        yield break;
 
     }
 
