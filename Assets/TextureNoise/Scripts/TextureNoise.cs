@@ -38,6 +38,19 @@ public class TextureNoise : MonoBehaviour {
     // Start is called before the first frame update
     IEnumerator Start() {
 
+        switch (noiseType) {
+            case NOISE_TYPE.CELLULAR:
+                break;
+            case NOISE_TYPE.PERLIN:
+                break;
+            case NOISE_TYPE.SIMPLEX:
+                break;
+        }
+
+        tex = new Texture2D(textureSizeX, textureSizeY);
+        targetRenderer.material.mainTexture = tex;
+
+
         yield return CrtGenerate();
     
     }
