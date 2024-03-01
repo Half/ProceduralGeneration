@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 127371400}
-  - component: {fileID: 127371399}
+  - component: {fileID: 127371401}
   m_Layer: 0
   m_Name: TerrainGenerator
   m_TagString: Untagged
@@ -140,25 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &127371399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 127371398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c37b356ba216394aafb10d20883ce26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  seed: 50
-  terrainSizeX: 50
-  terrainSizeZ: 50
-  prForest: {fileID: 9104346765886014814, guid: 1d14fc3a16476fa4692d6fdb6af1001a, type: 3}
-  prMountain: {fileID: 310889584281257854, guid: 1eedf34c102eded428af25bc91d30dd3, type: 3}
-  prGrass: {fileID: 3537732644078126539, guid: 205098c48da4d424c871853d87ef73a6, type: 3}
-  prWater: {fileID: 6474085761517795740, guid: 449613a5977f64742be10fa691788cd7, type: 3}
 --- !u!4 &127371400
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +155,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &127371401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127371398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a03edfd84ebf374bb2623179c8023d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seed: 0
+  terrainSizeX: 50
+  terrainSizeZ: 50
+  biomes:
+  - {fileID: 11400000, guid: 2f4253f04a566f1499aea30755450118, type: 2}
+  - {fileID: 11400000, guid: 442db036ef0d4004a8f6e54f7dad7584, type: 2}
+  - {fileID: 11400000, guid: 716522475c15fb549a366e063e1e94fb, type: 2}
+  - {fileID: 11400000, guid: 3b9b58cb9db79f642a5698ab02695229, type: 2}
 --- !u!1 &683788262
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,8 +486,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 127371399}
-        m_TargetAssemblyTypeName: TerrainGenerator, Assembly-CSharp
+      - m_Target: {fileID: 127371401}
+        m_TargetAssemblyTypeName: TerrainGeneratorWithScriptableObject, Assembly-CSharp
         m_MethodName: BtnGenerateTerrain
         m_Mode: 1
         m_Arguments:
@@ -618,8 +619,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 127371399}
-        m_TargetAssemblyTypeName: TerrainGenerator, Assembly-CSharp
+      - m_Target: {fileID: 127371401}
+        m_TargetAssemblyTypeName: TerrainGeneratorWithScriptableObject, Assembly-CSharp
         m_MethodName: BtnGenerateTerrainWithRandomSeed
         m_Mode: 1
         m_Arguments:

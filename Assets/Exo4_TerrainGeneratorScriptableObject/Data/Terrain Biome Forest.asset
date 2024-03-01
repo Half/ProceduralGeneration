@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ee1850caab45cbba94a7d745b24356, type: 3}
+  m_Name: Terrain Biome Forest
+  m_EditorClassIdentifier: 
+  spawnablePrefabs:
+  - {fileID: 9104346765886014814, guid: 39b82a8bf7bd1f74a9fa351a3a5748cf, type: 3}
+  noises:
+  - noiseType: 2
+    scaleMinMax:
+      x: 20
+      y: 40
+    offsetMinMax:
+      x: 0
+      y: 10000
+  - noiseType: 1
+    scaleMinMax:
+      x: 10
+      y: 20
+    offsetMinMax:
+      x: 0
+      y: 10000
+  validIfGreaterThan: 0.276
