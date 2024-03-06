@@ -81,7 +81,7 @@ public class TerrainGenerator : MonoBehaviour {
 
     private void Generate(TILE_TYPE type, float2 scaleMinMax, NOISE_TYPE noiseType, float greaterThanValue) {
 
-        // Forest
+        // Random offset & scale
         float2 noiseOffset = new float2(Random.Range(0f, 100000f), Random.Range(0f, 100000f));
         float noiseScale = Random.Range(scaleMinMax.x, scaleMinMax.y);
 
