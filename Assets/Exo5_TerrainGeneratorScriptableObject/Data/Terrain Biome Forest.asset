@@ -29,4 +29,11 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
-  validIfGreaterThan: 0.276
+  - noiseType: 2
+    scaleMinMax:
+      x: 10
+      y: 20
+    offsetMinMax:
+      x: 0
+      y: 10000
+  validIfGreaterThan: 0.51

@@ -22,11 +22,6 @@ public class TerrainBiome : ScriptableObject {
 
         // Setup temp noise array
         float[,] noiseValues = new float[terrain.GetLength(0), terrain.GetLength(1)];
-        for (int x = 0; x < noiseValues.GetLength(0); x++) {
-            for (int y = 0; y < noiseValues.GetLength(1); y++) {
-                noiseValues[x, y] = 1f;
-            }
-        }
 
         // Get all noise values
         foreach (TerrainBiomeNoise noise in noises) {
@@ -40,7 +35,7 @@ public class TerrainBiome : ScriptableObject {
                     float2 coordsOffseted = new float2(x + noiseOffset.x, y + noiseOffset.y);
                     float2 coords = new float2(coordsOffseted.x / noiseScale, coordsOffseted.y / noiseScale);
 
-                    noiseValues[x, y] *= noise.GetNoiseValue(coords);
+                    noiseValues[x, y] += noise.GetNoiseValue(coords) / noises.Count;
 
                 }
             }
@@ -52,9 +47,7 @@ public class TerrainBiome : ScriptableObject {
             for (int y = 0; y < terrain.GetLength(1); y++) {
 
                 if (noiseValues[x, y] >= validIfGreaterThan) {
-
-                    terrain[x, y] = this;
-
+                    terrain[x, y] = this;           
                 }
 
             }

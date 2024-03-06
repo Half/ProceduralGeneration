@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ee1850caab45cbba94a7d745b24356, type: 3}
-  m_Name: Terrain Biome Mountain
+  m_Name: Terrain Biome Water
   m_EditorClassIdentifier: 
   spawnablePrefabs:
-  - {fileID: 310889584281257854, guid: 2cd23223f2da9f343b2798f3c8b43780, type: 3}
+  - {fileID: 6474085761517795740, guid: 952a9ab00cb20b44d9c5ebc4d6bcbb31, type: 3}
   noises:
-  - noiseType: 1
+  - noiseType: 2
     scaleMinMax:
       x: 20
-      y: 40
+      y: 30
     offsetMinMax:
       x: 0
       y: 10000
-  - noiseType: 1
+  - noiseType: 2
     scaleMinMax:
       x: 20
-      y: 40
+      y: 30
     offsetMinMax:
       x: 0
       y: 10000
-  validIfGreaterThan: 0.334
+  validIfGreaterThan: 0.668
