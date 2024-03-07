@@ -15,6 +15,14 @@ MonoBehaviour:
   spawnablePrefabs:
   - {fileID: 6474085761517795740, guid: 952a9ab00cb20b44d9c5ebc4d6bcbb31, type: 3}
   noises:
+  - noiseType: 0
+    scaleMinMax:
+      x: 10
+      y: 20
+    offsetMinMax:
+      x: 0
+      y: 10000
+    invert: 1
   - noiseType: 2
     scaleMinMax:
       x: 20
@@ -22,14 +30,8 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
-  - noiseType: 2
-    scaleMinMax:
-      x: 20
-      y: 30
-    offsetMinMax:
-      x: 0
-      y: 10000
-  validIfGreaterThan: 0.668
+    invert: 0
+  validIfGreaterThan: 0.584
   curveX:
     serializedVersion: 2
     m_Curve:

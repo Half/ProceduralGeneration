@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnablePrefabs:
   - {fileID: 9104346765886014814, guid: 39b82a8bf7bd1f74a9fa351a3a5748cf, type: 3}
+  - {fileID: 9104346765886014814, guid: 298a29e53343db44586893f62786b56f, type: 3}
   noises:
   - noiseType: 2
     scaleMinMax:
@@ -22,6 +23,7 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
+    invert: 0
   - noiseType: 1
     scaleMinMax:
       x: 10
@@ -29,6 +31,7 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
+    invert: 0
   - noiseType: 2
     scaleMinMax:
       x: 10
@@ -36,6 +39,7 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
+    invert: 0
   validIfGreaterThan: 0.495
   curveX:
     serializedVersion: 2
