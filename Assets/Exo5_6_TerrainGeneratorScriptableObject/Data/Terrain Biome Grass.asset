@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnablePrefabs:
   - {fileID: 3537732644078126539, guid: c9f7d331e44b3aa4898d6543028c4466, type: 3}
+  - {fileID: 3537732644078126539, guid: cea425e6a0f80a847aa9df0391ee363c, type: 3}
+  - {fileID: 3537732644078126539, guid: 0c9542779bbbd8d47a9f4dade3b2590c, type: 3}
   noises: []
   validIfGreaterThan: 0
   curveX:

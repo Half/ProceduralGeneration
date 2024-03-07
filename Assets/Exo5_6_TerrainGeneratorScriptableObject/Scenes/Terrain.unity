@@ -172,9 +172,9 @@ MonoBehaviour:
   terrainSizeZ: 50
   biomes:
   - {fileID: 11400000, guid: 2f4253f04a566f1499aea30755450118, type: 2}
-  - {fileID: 11400000, guid: 3b9b58cb9db79f642a5698ab02695229, type: 2}
   - {fileID: 11400000, guid: 716522475c15fb549a366e063e1e94fb, type: 2}
   - {fileID: 11400000, guid: 442db036ef0d4004a8f6e54f7dad7584, type: 2}
+  - {fileID: 11400000, guid: 3b9b58cb9db79f642a5698ab02695229, type: 2}
   - {fileID: 11400000, guid: 434cf2273c89b5b449f8de5d55309fc2, type: 2}
   - {fileID: 11400000, guid: 9150de75d979cab479f83e642db829f5, type: 2}
   - {fileID: 11400000, guid: cfa3c74e3ebf61247a1142f73381bb71, type: 2}
