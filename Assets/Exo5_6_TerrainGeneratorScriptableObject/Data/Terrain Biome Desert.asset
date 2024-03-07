@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ee1850caab45cbba94a7d745b24356, type: 3}
-  m_Name: Terrain Biome Snow Forest
+  m_Name: Terrain Biome Desert
   m_EditorClassIdentifier: 
   spawnablePrefabs:
-  - {fileID: 9104346765886014814, guid: 3befb4bc48216e54f8c3f62f4e5a7216, type: 3}
+  - {fileID: 3537732644078126539, guid: 8892f137d15c14c4393bc092cca94474, type: 3}
   noises:
   - noiseType: 1
     scaleMinMax:
@@ -29,27 +29,52 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
-  validIfGreaterThan: 0.503
+  - noiseType: 0
+    scaleMinMax:
+      x: 20
+      y: 40
+    offsetMinMax:
+      x: 0
+      y: 10000
+  validIfGreaterThan: 0.619
   curveX:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 2.4374235
+      outSlope: 2.4374235
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40833333
+      value: 0.9952812
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6083384
+      value: 0.9952812
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: -2.5411766
+      outSlope: -2.5411766
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -59,25 +84,25 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
+      inSlope: 2.4374235
+      outSlope: 2.4374235
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.40833333
+      value: 0.9952812
       inSlope: 0
       outSlope: 0
-      tangentMode: 136
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.33333284
-      value: 0.23348999
-      inSlope: -0.3070586
-      outSlope: 0
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 1
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.765416
-      value: 0.23583984
+      time: 0.6083384
+      value: 0.9952812
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -86,13 +111,13 @@ MonoBehaviour:
       outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 136
+      value: 0
+      inSlope: -2.5411766
+      outSlope: -2.5411766
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
