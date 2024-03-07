@@ -116,7 +116,7 @@ public class TerrainGenerator : MonoBehaviour {
             for (int y = 0; y < terrainSizeZ; y++) {
 
                 GameObject prefab = GetPrefab(terrain[x, y]);
-                GameObject go = Instantiate(prefab, new Vector3(x, 0f, y), Quaternion.identity);
+                GameObject go = Instantiate(prefab, new Vector3(x + (x * 2f), 0f, y + (y * 2f)), Quaternion.identity);
                 spawnedObjects.Add(go);
 
             }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54ee1850caab45cbba94a7d745b24356, type: 3}
-  m_Name: Terrain Biome Mountain
+  m_Name: Terrain Biome Snow
   m_EditorClassIdentifier: 
   spawnablePrefabs:
-  - {fileID: 310889584281257854, guid: 2cd23223f2da9f343b2798f3c8b43780, type: 3}
+  - {fileID: 6474085761517795740, guid: a44bb377fbf5f7a47a232280a457d454, type: 3}
   noises:
-  - noiseType: 1
+  - noiseType: 2
     scaleMinMax:
-      x: 20
-      y: 40
+      x: 10
+      y: 20
     offsetMinMax:
       x: 0
       y: 10000
@@ -29,7 +29,7 @@ MonoBehaviour:
     offsetMinMax:
       x: 0
       y: 10000
-  validIfGreaterThan: 0.745
+  validIfGreaterThan: 0.308
   curveX:
     serializedVersion: 2
     m_Curve:
@@ -62,19 +62,37 @@ MonoBehaviour:
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 136
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.33333284
+      value: 0.23348999
+      inSlope: -0.3070586
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.765416
+      value: 0.23583984
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
       inSlope: 0
       outSlope: 0
-      tangentMode: 34
+      tangentMode: 136
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4

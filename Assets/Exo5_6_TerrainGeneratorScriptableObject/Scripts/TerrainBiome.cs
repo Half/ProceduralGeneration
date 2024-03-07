@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
@@ -8,7 +6,6 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(menuName = "Terrain Biome", fileName = "Terrain Biome")]
 public class TerrainBiome : ScriptableObject {
 
-    
     [SerializeField]
     private List<GameObject> spawnablePrefabs = new List<GameObject>();
 
@@ -17,6 +14,12 @@ public class TerrainBiome : ScriptableObject {
 
     [SerializeField, Range(0f, 1f)]
     private float validIfGreaterThan;
+
+    [SerializeField]
+    private AnimationCurve curveX;
+
+    [SerializeField]
+    private AnimationCurve curveZ;
 
     public void Generate(ref TerrainBiome[,] terrain) {
 
@@ -35,7 +38,11 @@ public class TerrainBiome : ScriptableObject {
                     float2 coordsOffseted = new float2(x + noiseOffset.x, y + noiseOffset.y);
                     float2 coords = new float2(coordsOffseted.x / noiseScale, coordsOffseted.y / noiseScale);
 
-                    noiseValues[x, y] += noise.GetNoiseValue(coords) / noises.Count;
+                    float value = noise.GetNoiseValue(coords) / noises.Count;
+                    value *= curveX.Evaluate(x / (float)noiseValues.GetLength(0));
+                    value *= curveZ.Evaluate(y / (float) noiseValues.GetLength(1));
+
+                    noiseValues[x, y] += value;
 
                 }
             }
