@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 [CreateAssetMenu(menuName = "Terrain Biome", fileName = "Terrain Biome")]
-public class TerrainBiome : ScriptableObject {
+public class TerrainBiomeData : ScriptableObject {
 
     [SerializeField]
     private List<GameObject> spawnablePrefabs = new List<GameObject>();
@@ -21,7 +21,7 @@ public class TerrainBiome : ScriptableObject {
     [SerializeField]
     private AnimationCurve curveZ;
 
-    public void Generate(ref TerrainBiome[,] terrain) {
+    public void Generate(ref TerrainBiomeData[,] terrain) {
 
         // Setup temp noise array
         float[,] noiseValues = new float[terrain.GetLength(0), terrain.GetLength(1)];

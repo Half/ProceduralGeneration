@@ -9,6 +9,7 @@ public struct TerrainBiomeNoise {
         CELLULAR,
         PERLIN,
         SIMPLEX,
+        NOISE_X_5
     }
 
     [SerializeField] public TYPE noiseType;
@@ -35,6 +36,18 @@ public struct TerrainBiomeNoise {
 
             case TYPE.SIMPLEX:
                 value = noise.snoise(coords);
+                break;
+
+            case TYPE.NOISE_X_5:
+
+                if (Mathf.Approximately(coords.x, 5f)) {
+                    value = 1f;
+                }
+
+                else {
+                    value = 0f;
+                }
+
                 break;
         }
 

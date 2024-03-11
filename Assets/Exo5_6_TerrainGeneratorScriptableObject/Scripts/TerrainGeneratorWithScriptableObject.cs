@@ -17,9 +17,9 @@ public class TerrainGeneratorWithScriptableObject : MonoBehaviour {
     private int terrainSizeZ = 50;
 
     [SerializeField]
-    private List<TerrainBiome> biomes = new List<TerrainBiome>();
+    private List<TerrainBiomeData> biomes = new List<TerrainBiomeData>();
 
-    private TerrainBiome[,] terrain;
+    private TerrainBiomeData[,] terrain;
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
 
@@ -40,13 +40,13 @@ public class TerrainGeneratorWithScriptableObject : MonoBehaviour {
     private void GenerateTerrain()
     {
 
-        terrain = new TerrainBiome[terrainSizeX, terrainSizeZ];
+        terrain = new TerrainBiomeData[terrainSizeX, terrainSizeZ];
 
         // Init seed
         Random.InitState(seed);
 
         // Generate terrain
-        foreach (TerrainBiome biome in biomes) {
+        foreach (TerrainBiomeData biome in biomes) {
             biome.Generate(ref terrain);
         }
 
