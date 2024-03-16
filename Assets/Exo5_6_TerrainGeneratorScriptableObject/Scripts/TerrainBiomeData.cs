@@ -29,7 +29,7 @@ public class TerrainBiomeData : ScriptableObject {
         // Get all noise values
         foreach (TerrainBiomeNoise noise in noises) {
 
-            float2 noiseOffset = new float2(Random.Range(noise.offsetMinMax.x, noise.offsetMinMax.y), Random.Range(noise.offsetMinMax.x, noise.offsetMinMax.y));
+            float2 noiseOffset = noise.GetNoiseOffset();
             float noiseScale = Random.Range(noise.scaleMinMax.x, noise.scaleMinMax.y);
 
             for (int x = 0; x < noiseValues.GetLength(0); x++) {

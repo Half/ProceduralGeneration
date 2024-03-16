@@ -1,6 +1,7 @@
 using System;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [Serializable]
 public struct TerrainBiomeNoise {
@@ -16,9 +17,16 @@ public struct TerrainBiomeNoise {
 
     [SerializeField] public float2 scaleMinMax;
 
-    [SerializeField] public float2 offsetMinMax;
+    [SerializeField] private float2 offsetMinMax;
 
-    [SerializeField] public bool invert;
+    [SerializeField] private bool invert;
+
+    public float2 GetNoiseOffset() {
+
+        return new float2(Random.Range(offsetMinMax.x, offsetMinMax.y), Random.Range(offsetMinMax.x, offsetMinMax.y));
+
+    }
+
 
     public float GetNoiseValue(float2 coords) {
 
