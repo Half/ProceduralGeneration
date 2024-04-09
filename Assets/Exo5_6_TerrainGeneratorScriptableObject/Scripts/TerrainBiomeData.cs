@@ -64,6 +64,10 @@ public class TerrainBiomeData : ScriptableObject {
 
     public GameObject GetPrefabToSpawn() {
 
+        if (spawnablePrefabs == null || spawnablePrefabs.Count == 0) {
+            return null;
+        }
+
         return spawnablePrefabs[Random.Range(0, spawnablePrefabs.Count)];
 
     }

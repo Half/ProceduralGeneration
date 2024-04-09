@@ -65,6 +65,11 @@ public class TerrainGeneratorWithScriptableObject : MonoBehaviour {
             for (int y = 0; y < terrainSizeZ; y++) {
 
                 GameObject prefab = terrain[x, y].GetPrefabToSpawn();
+
+                if (prefab == null) {
+                    continue;
+                }
+
                 GameObject go = Instantiate(prefab, new Vector3(x, 0f, y), Quaternion.identity);
                 go.transform.SetParent(transform);
                 spawnedObjects.Add(go);
