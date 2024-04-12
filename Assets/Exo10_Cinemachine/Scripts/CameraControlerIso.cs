@@ -99,19 +99,17 @@ public class CameraControlerIso : MonoBehaviour
         bool recalculateWorldPositions = cursorPos != lastCursorPos;
 
         if (recalculateWorldPositions) {
-
             lastPosWorld = ScreenToWorldPointFloor(lastCursorPos);
             posWorld = ScreenToWorldPointFloor(cursorPos);
             var baseMove = lastPosWorld.Value - posWorld.Value;
             target.position += baseMove;
         }
+
     }
 
     private void ApplyZoom() {
 
         float scrollDelta = Input.mouseScrollDelta.y;
-
-        Debug.Log(Input.mouseScrollDelta.y);
 
         float scroll = scrollDelta * zoomSensibility;
         targetZoom = Mathf.Clamp(targetZoom + scroll, zoomRange.y, zoomRange.x);
