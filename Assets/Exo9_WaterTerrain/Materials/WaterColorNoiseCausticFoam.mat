@@ -100,7 +100,7 @@ Material:
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
-    - _CausticDensity: 2
+    - _CausticDensity: 1.82
     - _CausticDetail: 5
     - _CausticDistance: 0.5
     - _ClearCoatMask: 0
@@ -114,8 +114,8 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FadeDistance: 0.5
-    - _FoamDetail: 4
-    - _FoamDistance: 0.5
+    - _FoamDetail: 1.89
+    - _FoamDistance: 0.32
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -137,7 +137,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _CausticColor: {r: 0.7688679, g: 0.9467292, b: 1, a: 0}
+    - _CausticColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DeepColor: {r: 0, g: 0.32138366, b: 0.6886792, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

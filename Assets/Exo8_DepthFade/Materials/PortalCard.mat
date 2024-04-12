@@ -96,6 +96,7 @@ Material:
     m_Floats:
     - _Alpha: 1
     - _AlphaClip: 0
+    - _AlphaDistance: 0.1
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -119,7 +120,7 @@ Material:
     - _DstBlendAlpha: 10
     - _EmissionEnabled: 0
     - _EnvironmentReflections: 1
-    - _FadeDistance: 35.7
+    - _FadeDistance: 36.5
     - _FlipbookBlending: 0
     - _FlipbookMode: 0
     - _GlossMapScale: 0
