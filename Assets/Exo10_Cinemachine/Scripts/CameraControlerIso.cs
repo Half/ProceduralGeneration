@@ -1,12 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.FilePathAttribute;
-using UnityEngine.UIElements;
-using Unity.VisualScripting.FullSerializer;
 
 public class CameraControlerIso : MonoBehaviour
 {
@@ -24,9 +17,6 @@ public class CameraControlerIso : MonoBehaviour
 
     // Move
     private Vector3 lastCursorPos;
-    private Vector3 cursorPos;
-    private Vector3? lastPosWorld;
-    private Vector3? posWorld;
 
     // Zoom
     [Header("Zoom")]
@@ -75,8 +65,6 @@ public class CameraControlerIso : MonoBehaviour
             SetState(STATE.NONE);
         }
 
-        cursorPos = Input.mousePosition;
-
         ApplyMoveTarget();
         ApplyZoom();
         ApplyRotationTarget();
@@ -96,12 +84,12 @@ public class CameraControlerIso : MonoBehaviour
 
     private void ApplyMoveTargetDragging() {
 
-        bool recalculateWorldPositions = cursorPos != lastCursorPos;
+        bool recalculateWorldPositions = Input.mousePosition != lastCursorPos;
 
         if (recalculateWorldPositions) {
-            lastPosWorld = ScreenToWorldPointFloor(lastCursorPos);
-            posWorld = ScreenToWorldPointFloor(cursorPos);
-            var baseMove = lastPosWorld.Value - posWorld.Value;
+            Vector3 lastPosWorld = ScreenToWorldPointFloor(lastCursorPos);
+            Vector3 posWorld = ScreenToWorldPointFloor(Input.mousePosition);
+            var baseMove = lastPosWorld - posWorld;
             target.position += baseMove;
         }
 
@@ -133,7 +121,6 @@ public class CameraControlerIso : MonoBehaviour
             axis = -1f;
         }
 
-        
         target.localEulerAngles = new Vector3(target.localEulerAngles.x, target.localEulerAngles.y + (axis * rotationSensitivity * Time.deltaTime), target.localEulerAngles.z);
     }
 
@@ -141,10 +128,12 @@ public class CameraControlerIso : MonoBehaviour
     private Vector3 ScreenToWorldPointFloor(Vector3 screenPos) {
 
         Ray ray = sourceCamera.ScreenPointToRay(screenPos);
-        float angle = Vector3.Angle(ray.direction, Vector3.down);
-        float distance = ray.origin.y / Mathf.Cos(angle * Mathf.Deg2Rad);
+
+        Plane plane = new Plane(Vector3.up, Vector3.zero);
+        plane.Raycast(ray, out float distance);
         Vector3 pos = ray.GetPoint(distance);
         pos.y = 0f;
+
         return pos;
 
     }
