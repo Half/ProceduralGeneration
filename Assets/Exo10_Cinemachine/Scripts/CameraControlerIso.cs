@@ -1,10 +1,18 @@
+using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CameraControlerIso : MonoBehaviour
 {
+
+    // Camera
+    [Header("Camera")]
     [SerializeField]
     private Camera sourceCamera;
+
+    [SerializeField]
+    private CinemachineVirtualCamera virtualCamera;
 
     [SerializeField]
     private Transform target;
@@ -20,9 +28,6 @@ public class CameraControlerIso : MonoBehaviour
 
     // Zoom
     [Header("Zoom")]
-    [SerializeField]
-    private CinemachineCameraOffset cameraOffset;
-
     [SerializeField]
     private float zoomSensibility;
 
@@ -40,8 +45,15 @@ public class CameraControlerIso : MonoBehaviour
     [SerializeField]
     private float rotationSensitivity;
 
+    [SerializeField]
+    private float rotationSmoothTime = 0.1f;
+
+    private float rotationVelocity = 0.0f;
+    private float targetRotation;
+
     private void Start() {
         targetZoom = zoomRange.y;
+        targetRotation = target.localEulerAngles.y;
     }
 
     void SetState(STATE state) {
@@ -102,10 +114,12 @@ public class CameraControlerIso : MonoBehaviour
         float scroll = scrollDelta * zoomSensibility;
         targetZoom = Mathf.Clamp(targetZoom + scroll, zoomRange.y, zoomRange.x);
 
-        // Go to target zoom
-        float value = Mathf.SmoothDamp(cameraOffset.m_Offset.z, targetZoom, ref zoomVelocity, zoomSmoothTime);
+        CinemachineOrbitalTransposer transposer = virtualCamera.GetCinemachineComponent<CinemachineOrbitalTransposer>();
 
-        cameraOffset.m_Offset = new Vector3(cameraOffset.m_Offset.x, cameraOffset.m_Offset.y, value);
+        // Go to target zoom
+        float value = Mathf.SmoothDamp(transposer.m_FollowOffset.z, targetZoom, ref zoomVelocity, zoomSmoothTime);
+
+        transposer.m_FollowOffset = new Vector3(transposer.m_FollowOffset.x, transposer.m_FollowOffset.y, value);
    
     }
 
@@ -113,15 +127,20 @@ public class CameraControlerIso : MonoBehaviour
 
         var axis = 0f;
 
-        if (Input.GetKey(KeyCode.A)) {
-            axis = 1f;
+        if (Input.GetKeyDown(KeyCode.A)) {
+            axis = 1f * 90f;
         }
 
-        if (Input.GetKey(KeyCode.E)) {
-            axis = -1f;
+        if (Input.GetKeyDown(KeyCode.E)) {
+            axis = -1f * 90f;
         }
 
-        target.localEulerAngles = new Vector3(target.localEulerAngles.x, target.localEulerAngles.y + (axis * rotationSensitivity * Time.deltaTime), target.localEulerAngles.z);
+        //targetRotation = targetRotation + axis * (rotationSensitivity * Time.deltaTime);
+        //float value = Mathf.SmoothDamp(target.localEulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
+
+        //target.localEulerAngles = new Vector3(target.localEulerAngles.x, value, target.localEulerAngles.z);
+
+        target.localEulerAngles = new Vector3(target.localEulerAngles.x, target.localEulerAngles.y + axis, target.localEulerAngles.z);
     }
 
 
