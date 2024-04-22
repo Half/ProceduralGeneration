@@ -1,9 +1,7 @@
 using System.Collections;
 using Cinemachine;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Playables;
-using static UnityEngine.Rendering.DebugUI;
 
 public class DialogueScenario : MonoBehaviour {
 
