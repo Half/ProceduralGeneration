@@ -40,10 +40,12 @@ public struct TerrainBiomeNoise {
 
             case TYPE.PERLIN:
                 value = noise.cnoise(coords);
+                value = math.remap(-1f, 1f, 0f, 1f, value);
                 break;
 
             case TYPE.SIMPLEX:
                 value = noise.snoise(coords);
+                value = math.remap(-1f, 1f, 0f, 1f, value);
                 break;
 
             case TYPE.NOISE_X_5:
@@ -58,8 +60,6 @@ public struct TerrainBiomeNoise {
 
                 break;
         }
-
-        value = math.remap(-1f, 1f, 0f, 1f, value);
 
         if (invert) {
             value = 1f - value;

@@ -155,14 +155,16 @@ public class TerrainGenerator : MonoBehaviour {
 
             case NOISE_TYPE.PERLIN:
                 value = noise.cnoise(coords);
+                value = math.remap(-1f, 1f, 0f, 1f, value);
                 break;
 
             case NOISE_TYPE.SIMPLEX:
                 value = noise.snoise(coords);
+                value = math.remap(-1f, 1f, 0f, 1f, value);
                 break;
         }
 
-        value = math.remap(-1f, 1f, 0f, 1f, value);
+        
 
         return value;
 

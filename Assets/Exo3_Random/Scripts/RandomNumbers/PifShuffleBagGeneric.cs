@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class PifShuffleBag : MonoBehaviour {
+public class PifShuffleBagGeneric : MonoBehaviour {
 
     [SerializeField]
     private GameObject prefabGraphItem;
@@ -13,16 +14,12 @@ public class PifShuffleBag : MonoBehaviour {
     [SerializeField]
     private int randomMax = 100;
 
-    [SerializeField]
-    private int nbTimeToFillShuffleBag = 1;
-
-    private List<int> shuffleBag = new List<int>();
-
-    private int[] graphData;
-
     private int nbRandom;
 
     private GameObject[] graphItem;
+    private int[] graphData;
+
+    private ShuffleBagGeneric<int> shuffleBag;
 
     private int GetSize() {
         return randomMax;
@@ -30,49 +27,21 @@ public class PifShuffleBag : MonoBehaviour {
 
     private void Start() {
 
-        graphData = new int[GetSize() * nbTimeToFillShuffleBag];
-        graphItem = new GameObject[GetSize() * nbTimeToFillShuffleBag];
+        graphItem = new GameObject[GetSize()];
+        graphData = new int[GetSize()];
+        shuffleBag = new ShuffleBagGeneric<int>();
 
         for (int i = 0; i < GetSize(); i++) {
-
             graphItem[i] = Instantiate(prefabGraphItem, transform);
             graphItem[i].transform.localPosition = new Vector3(i, 0f, 0f);
+            graphData[i] = 0;
 
+            shuffleBag.AddElement(i);
         }
 
         StartCoroutine(AddRandom(10));
 
     }
-
-    public static void Shuffle<T>(IList<T> list) {
-        for (int i = 0; i < list.Count; i++) {
-            T temp = list[i];
-            int randomIndex = Random.Range(i, list.Count);
-            list[i] = list[randomIndex];
-            list[randomIndex] = temp;
-        }
-    }
-
-    private int GetItemInShuffleBag() {
-
-        if (shuffleBag.Count == 0) {
-
-            for (int j = 0; j < nbTimeToFillShuffleBag; j++) {
-                for (int i = 0; i < GetSize(); i++) {
-                    shuffleBag.Add(i);
-                }
-            }
-
-            Shuffle(shuffleBag);
-
-        }
-
-        int random = shuffleBag[0];
-        shuffleBag.RemoveAt(0);
-        return random;
-
-    }
-
 
     private IEnumerator AddRandom(int nb) {
 
@@ -80,8 +49,8 @@ public class PifShuffleBag : MonoBehaviour {
 
         for (int i = 0; i < nb; i++) {
 
-            int random = GetItemInShuffleBag();
-            graphData[random]++;
+            int value = shuffleBag.Pick();
+            graphData[value]++;
 
         }
 

@@ -83,18 +83,18 @@ public class TextureNoise : MonoBehaviour {
 
             case NOISE_TYPE.PERLIN:
                 color = noise.cnoise(coords);
+                color = math.remap(-1f, 1f, 0f, 1f, color);
                 break;
 
             case NOISE_TYPE.SIMPLEX:
                 color = noise.snoise(coords);
+                color = math.remap(-1f, 1f, 0f, 1f, color);
                 break;
         }
 
         //color += 1f;
         //color /= 2f;
-
-        color = math.remap(-1f, 1f, 0f, 1f, color);
-
+        
         return color;
 
     }
